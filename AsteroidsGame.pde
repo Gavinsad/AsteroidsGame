@@ -11,7 +11,8 @@ Spaceship Bob  = new Spaceship();
 public void draw() 
 {
   noStroke();
-background(2);
+ fill(32,42,68,40);
+   rect(0,0,width,height);
   for(int i=0;i<Bobby.length;i++){
    Bobby[i].show(); 
   }
