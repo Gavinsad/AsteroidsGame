@@ -8,19 +8,37 @@ public void setup()
   }
 }
 Spaceship Bob  = new Spaceship();
-public void draw() 
-{
-  noStroke();
- fill(32,42,68,40);
+ArrayList <Asteroid> ast = new ArrayList<Asteroid>();
+
+public void draw(){
+noStroke();
+  fill(32,42,68,80);
    rect(0,0,width,height);
   for(int i=0;i<Bobby.length;i++){
    Bobby[i].show(); 
+  }
+  for(int i=0;i<15;i++){
+   ast.add(new Asteroid()); 
+  }
+  stroke(3);
+  for(int i=0;i<15;i++){
+  ast.get(i).show();
+    ast.get(i).move(); 
   }
  stroke(1);
  Bob.show();
  Bob.move();
 
+int x=15;
+for(int i=0;i<x;i++){
+if(dist((float)Bob.getCenterX(),(float)Bob.getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=40){
+ ast.remove(i); 
+ x--;
 }
+}
+}
+
+
 public void keyPressed(){
  if(key=='w'){
   Bob.accelerate(1.00002);
