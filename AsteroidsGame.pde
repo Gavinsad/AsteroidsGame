@@ -1,21 +1,22 @@
 //your variable declarations here
-Star[]  Bobby = new Star [200];
+Star[]  nightsky = new Star [200];
 public void setup() 
 {
   size(500,500);
-  for(int i=0;i<Bobby.length;i++){
-   Bobby[i]=new Star(); 
+  for(int i=0;i<nightsky.length;i++){
+   nightsky[i]=new Star(); 
   }
 }
-Spaceship Bob  = new Spaceship();
+Spaceship Bright  = new Spaceship();
+Bullet Beam  = new Bullet();
 ArrayList <Asteroid> ast = new ArrayList<Asteroid>();
-
+ArrayList <Bullet> magnum = new ArrayList<Bullet>();
 public void draw(){
 noStroke();
   fill(32,42,68,80);
    rect(0,0,width,height);
-  for(int i=0;i<Bobby.length;i++){
-   Bobby[i].show(); 
+  for(int i=0;i<nightsky.length;i++){
+   nightsky[i].show(); 
   }
   for(int i=0;i<15;i++){
    ast.add(new Asteroid()); 
@@ -25,13 +26,19 @@ noStroke();
   ast.get(i).show();
     ast.get(i).move(); 
   }
+  
+   for(int i=magnum.size();i>0;i--){
+  magnum.get(i).show();
+    magnum.get(i).move();} 
  stroke(1);
- Bob.show();
- Bob.move();
+ Bright.show();
+ Bright.move();
+ Beam.show();
+ Beam.move();
 
 int x=15;
 for(int i=0;i<x;i++){
-if(dist((float)Bob.getCenterX(),(float)Bob.getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=40){
+if(dist((float)Bright.getCenterX(),(float)Bright.getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=40){
  ast.remove(i); 
  x--;
 }
@@ -41,27 +48,33 @@ if(dist((float)Bob.getCenterX(),(float)Bob.getCenterY(),(float)ast.get(i).getCen
 
 public void keyPressed(){
  if(key=='w'){
-  Bob.accelerate(1.00002);
+  Bright.accelerate(1.00002);
  }//end of w
  if(key=='s'){
-  Bob.accelerate(-1.000002) ;
+  Bright.accelerate(-1.000002) ;
  }//end of s
  if(key=='a'){
-  Bob.turn(-9); 
+  Bright.turn(-9); 
  }//end of a
  if(key =='d'){
-  Bob.turn(9); 
+  Bright.turn(9); 
  }//end of d
  if(key =='x'){
-  Bob.hyperspace();
+  Bright.hyperspace();
+  if(key =='p'){
+    magnum.add(new Bullet());
+      for(int i=magnum.size();i>0;i--){
+  magnum.get(i).show();
+    magnum.get(i).move();} ;
+  }
  }
  //setmaxspeed
- if(Bob.getSpeedX()>3){
-   Bob.setSpeedX(3); }
-  if(Bob.getSpeedY()>3){
-   Bob.setSpeedY(3); }
- if(Bob.getSpeedX()<-3){
-   Bob.setSpeedX(-3);}
-if(Bob.getSpeedY()<-3){
-   Bob.setSpeedY(-3);}
+ if(Bright.getSpeedX()>3){
+   Bright.setSpeedX(3); }
+  if(Bright.getSpeedY()>3){
+   Bright.setSpeedY(3); }
+ if(Bright.getSpeedX()<-3){
+   Bright.setSpeedX(-3);}
+if(Bright.getSpeedY()<-3){
+   Bright.setSpeedY(-3);}
 }
