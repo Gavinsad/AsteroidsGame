@@ -8,10 +8,12 @@ public void setup()
   }
 }
 Spaceship Bright  = new Spaceship();
-Bullet Beam  = new Bullet();
+
 ArrayList <Asteroid> ast = new ArrayList<Asteroid>();
 ArrayList <Bullet> magnum = new ArrayList<Bullet>();
 public void draw(){
+ 
+ 
 noStroke();
   fill(32,42,68,80);
    rect(0,0,width,height);
@@ -24,26 +26,40 @@ noStroke();
   stroke(3);
   for(int i=0;i<15;i++){
   ast.get(i).show();
-    ast.get(i).move(); 
+    ast.get(i).move();
+    for(int s=0;s<magnum.size();s++){ 
+if(dist((float)magnum.get(s).getCenterX(),(float)magnum.get(s).getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=10){
+ magnum.remove(s); 
+ ast.remove(i);
+ }
+ }
   }
   
-   for(int i=magnum.size();i>0;i--){
-  magnum.get(i).show();
-    magnum.get(i).move();} 
+   
  stroke(1);
  Bright.show();
  Bright.move();
- Beam.show();
- Beam.move();
 
+int hp=5;
 int x=15;
 for(int i=0;i<x;i++){
 if(dist((float)Bright.getCenterX(),(float)Bright.getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=40){
- ast.remove(i); 
- x--;
-}
-}
-}
+ hp--; 
+
+ x--;}}
+
+  for(int i=0;i<magnum.size();i++){
+             
+  magnum.get(i).show();
+    magnum.get(i).move(6);
+    
+      
+   } 
+  
+   
+  
+   
+}//end of draw
 
 
 public void keyPressed(){
@@ -60,14 +76,12 @@ public void keyPressed(){
   Bright.turn(9); 
  }//end of d
  if(key =='x'){
-  Bright.hyperspace();
-  if(key =='p'){
-    magnum.add(new Bullet());
-      for(int i=magnum.size();i>0;i--){
-  magnum.get(i).show();
-    magnum.get(i).move();} ;
-  }
+  Bright.hyperspace();}
+  if(key ==' '){
+    magnum.add(new Bullet(Bright));
+      
  }
+ 
  //setmaxspeed
  if(Bright.getSpeedX()>3){
    Bright.setSpeedX(3); }
