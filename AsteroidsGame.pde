@@ -28,7 +28,7 @@ noStroke();
   ast.get(i).show();
     ast.get(i).move();
     for(int s=0;s<magnum.size();s++){ 
-if(dist((float)magnum.get(s).getCenterX(),(float)magnum.get(s).getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=10){
+if(dist((float)magnum.get(s).getCenterX(),(float)magnum.get(s).getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=25){
  magnum.remove(s); 
  ast.remove(i);
  }
