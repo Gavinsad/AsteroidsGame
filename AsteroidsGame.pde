@@ -42,7 +42,7 @@ if(dist((float)magnum.get(s).getCenterX(),(float)magnum.get(s).getCenterY(),(flo
 
 int hp=5;
 int x=15;
-for(int i=0;i<x;i++){
+for(int i=0;i<ast.size();i++){
 if(dist((float)Bright.getCenterX(),(float)Bright.getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=40){
  hp--; 
 
