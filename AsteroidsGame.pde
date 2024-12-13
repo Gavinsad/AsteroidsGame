@@ -31,6 +31,7 @@ noStroke();
 if(dist((float)magnum.get(s).getCenterX(),(float)magnum.get(s).getCenterY(),(float)ast.get(i).getCenterX(),(float)ast.get(i).getCenterY())<=25){
  magnum.remove(s); 
  ast.remove(i);
+i--;
  }
  }
   }
